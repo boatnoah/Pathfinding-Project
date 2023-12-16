@@ -26,7 +26,7 @@ Pathfinding is a fundamental problem in computer science, involving finding the 
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/your-username/pathfinding-project.git
+   git clone https://github.com/boatnoah/pathfinding-project.git
    ```
 
 2. **Install Dependencies:**
@@ -57,9 +57,3 @@ The project currently supports the following pathfinding algorithms:
 - A\* Algorithm
 - Breadth-First Search
 - Depth-First Search
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. Feel free to use, modify, and distribute the code as per the terms of the license.
-
-Happy pathfinding!
