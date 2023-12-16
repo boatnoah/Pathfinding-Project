@@ -2,7 +2,7 @@
 
 ## Overview
 
-Welcome to the Pathfinding Project! This Python project is designed to implement various pathfinding algorithms to find the shortest path between two points on a grid. Whether you're a beginner looking to learn about pathfinding algorithms or an experienced developer seeking a practical application, this project provides a hands-on experience with popular pathfinding techniques.
+Welcome to the Pathfinding Project! This Python project is designed to implement various pathfinding algorithms to find the shortest path between two points on a grid.
 
 ## Table of Contents
 
@@ -11,12 +11,10 @@ Welcome to the Pathfinding Project! This Python project is designed to implement
 3. [Setup](#setup)
 4. [Usage](#usage)
 5. [Algorithms](#algorithms)
-6. [Contributing](#contributing)
-7. [License](#license)
 
 ## Introduction
 
-Pathfinding is a fundamental problem in computer science and robotics, involving finding the most efficient route between two points. This project aims to implement and showcase various pathfinding algorithms, allowing users to compare and understand their differences in terms of efficiency and computational complexity.
+Pathfinding is a fundamental problem in computer science, involving finding the most efficient route between two points.
 
 ## Features
 
@@ -50,9 +48,6 @@ Pathfinding is a fundamental problem in computer science and robotics, involving
    - Click and drag to create walls or obstacles on the grid.
    - Place the start and end points by clicking on the respective cells.
    - Press the "Run" button to visualize the algorithm finding the shortest path.
-
-3. **Customize:**
-   - Modify the `config.py` file to adjust parameters like grid size, animation speed, etc.
 
 ## Algorithms
 
