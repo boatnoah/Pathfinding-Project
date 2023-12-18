@@ -15,7 +15,3 @@ class Box:
 
 
 
-
-class DropDown:
-    def __init__(self) -> None:
-        pass
