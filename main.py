@@ -5,16 +5,15 @@ from settings import *
 from box import Box
 from button import Button
 from queue import PriorityQueue
-import random
+
 
 
 
 pygame.init()
 screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 
-priority_queue = PriorityQueue()#Dijkstra
+priority_queue = PriorityQueue() #Dijkstra and A*
 queue = [] #BFS
-heap = [] #A-star
 stack = [] #DFS
 path = []
 
@@ -34,7 +33,10 @@ def initialize_grid(rows, col):
     
 
 
-
+def heuristic(a, b):
+    x1, y1 = a.x, a.y
+    x2, y2 = b.x, b.y
+    return abs(x1 - x2) + abs(y1 - y2)
 
 
 def algorithm_menu_screen(first_run=True):
@@ -140,7 +142,6 @@ def main(typeOfAlgo, first_run): #grid screen
                     path.clear()
                     priority_queue = PriorityQueue()
                     queue.clear()
-                    heap.clear()
                 if event.key == pygame.K_ESCAPE: 
                     #still preserve the starting and target positions and walls
                     for i in range(ROWS):
@@ -159,7 +160,6 @@ def main(typeOfAlgo, first_run): #grid screen
                     path.clear()
                     priority_queue = PriorityQueue()
                     queue.clear()
-                    heap.clear()
                     stack.clear()
                     is_starting_set = True
                     is_target_set = True
@@ -207,7 +207,34 @@ def main(typeOfAlgo, first_run): #grid screen
 
 
             elif algorithm_to_run == "A-star":
-                pass
+                print("Running A-star")
+                if priority_queue.empty() and searching:
+                    priority_queue.put((0, start_cell))
+                    start_cell.distance = 0
+                if not priority_queue.empty() and searching:
+                    current_distance, current_box = priority_queue.get()
+
+                    if not current_box.isVisited:
+                        current_box.isVisited = True
+
+                        if current_box.isTarget:
+                            searching = False
+                            while current_box.prior is not None:
+                                path.append(current_box.prior)
+                                current_box = current_box.prior
+                                pygame.event.pump()
+                    
+                        for neighbor, edge_weight in current_box.neighbors:
+                            if not neighbor.isVisited and not neighbor.isWall:
+                                tentative_distance = current_distance + edge_weight + heuristic(neighbor, target_cell)
+
+                                if tentative_distance < neighbor.distance:
+                                    neighbor.distance = tentative_distance
+                                    neighbor.prior = current_box
+                                    priority_queue.put((tentative_distance, neighbor))
+                                    neighbor.isQueued = True
+            
+
             elif algorithm_to_run == "BFS":
                 print("Running BFS")
                 if not queue and searching:
@@ -231,7 +258,29 @@ def main(typeOfAlgo, first_run): #grid screen
                                 queue.append(neighbor)
         
             elif algorithm_to_run == "DFS":
-                pass
+                if not stack and searching:
+                    stack.append(start_cell)
+                
+                if stack and searching:
+                    current_box = stack.pop()
+                    if not current_box.isVisited:
+                        current_box.isVisited = True
+                    
+                    if current_box.isTarget:
+                        searching = False
+                        while current_box.prior != start_cell:
+                            path.append(current_box.prior)
+                            current_box = current_box.prior
+                    
+                    else:
+                        for neighbor, _ in current_box.neighbors:
+                            if not neighbor.isVisited and not neighbor.isWall:
+                                neighbor.isQueued = True
+                                neighbor.prior = current_box
+                                stack.append(neighbor)
+                        
+
+
             
         screen.fill((0, 0, 0))
         for i in range(ROWS):
