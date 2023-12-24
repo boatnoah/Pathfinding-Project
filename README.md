@@ -35,10 +35,10 @@ Pathfinding is a fundamental problem in computer science, involving finding the 
    pip install pygbag
    ```
 
-> For information on deploying visit these sites:
+> For information on deploying Pygame on the web visit these sites:
 >
-> - https://dev.to/sandy_codes_py/deploy-pygames-to-github-pages-with-webassembly-56po
-> - https://medium.com/@eri.zhang21/running-a-python-game-on-the-web-aa8b13037e15
+> - https://dev.to/sandy_codes_py/deploy-pygames-to-github-pages-with-webassembly-56po (github method)
+> - https://medium.com/@eri.zhang21/running-a-python-game-on-the-web-aa8b13037e15 (hosting service method)
 
 ## Usage
 
