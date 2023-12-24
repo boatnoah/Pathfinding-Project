@@ -18,11 +18,11 @@ jobs:
           python -m pip install pygbag
           echo "Successfully installed pygbag"
           echo "Attempting to build the game"
-          python -m pygbag --build main.py
+          python -m pygbag --build pathfindingproject/main.py
           echo "Successfully build the game and complied to WebAssembly"
 
       - name: "Upload to GitHub pages branch gh-pages"
         uses: JamesIves/github-pages-deploy-action@4.1.7
         with:
           branch: gh-pages
-          folder: build/web
+          folder: pathfindingproject/build/web
