@@ -19,7 +19,7 @@ Pathfinding is a fundamental problem in computer science, involving finding the 
 ## Features
 
 - **Grid Visualization:** View the pathfinding algorithms in action on a visual grid.
-- **Multiple Algorithms:** Implement and compare popular pathfinding algorithms like Dijkstra's, A\*, and more.
+- **Multiple Algorithms:** Implement and compare popular pathfinding and traversing algorithms like Dijkstra's, A\*, Bredth-First Search, Depth-First Search.
 
 ## Setup
 
@@ -30,9 +30,15 @@ Pathfinding is a fundamental problem in computer science, involving finding the 
    ```
 
 2. **Install Dependencies:**
-   ```bash
-   pip install -r requirements.txt
    ```
+   pip install pygame
+   pip install pygbag
+   ```
+
+> For information on deploying visit these sites:
+>
+> - https://dev.to/sandy_codes_py/deploy-pygames-to-github-pages-with-webassembly-56po
+> - https://medium.com/@eri.zhang21/running-a-python-game-on-the-web-aa8b13037e15
 
 ## Usage
 
@@ -44,10 +50,11 @@ Pathfinding is a fundamental problem in computer science, involving finding the 
 
 2. **Interact with the GUI:**
 
-   - Select a pathfinding algorithm from the dropdown menu.
-   - Click and drag to create walls or obstacles on the grid.
-   - Place the start and end points by clicking on the respective cells.
-   - Press the "Run" button to visualize the algorithm finding the shortest path.
+   - Left Mouse Button: Set start and target positions, draw obstacles.
+   - Right Mouse Button: Erase walls.
+   - c: Clear the grid.
+   - Escape: Return to the algorithm selection menu.
+   - Enter: Run the selected algorithm.
 
 ## Algorithms
 
