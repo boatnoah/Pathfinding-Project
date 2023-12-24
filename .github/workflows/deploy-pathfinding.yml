@@ -12,14 +12,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Checkout
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Install dependencies
         run: |
-          echo "Attempting to install pygbag"
           python -m pip install pygbag
-          echo "Successfully installed pygbag"
-          echo "Attempting to build the game"
-          python -m pygbag --build $GITHUB_WORKSPACE/main.py
-          echo "Successfully build the game and complied to WebAssembly"
+
+      - name: Build the visualizer
+        run: python -m pygbag --build $GITHUB_WORKSPACE/main.py
 
   deploy-to-gh-pages:
     name: Deploy to GitHub Pages
@@ -31,7 +34,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Deploy to GitHub Pages
-        uses: boatnoah/github-pages-deploy-action@4.1.7
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          branch: gh-pages
-          folder: build/web
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ${{ github.workspace }}/build/web
