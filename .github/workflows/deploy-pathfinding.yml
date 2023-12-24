@@ -1,4 +1,4 @@
-name: Build and Deploy Pathfinding Visualizer
+name: Pathfinding Visualizer
 on:
   push:
     branches:
@@ -7,34 +7,22 @@ on:
 
 jobs:
   build-pygbag:
-    name: Build Pathfinding Visualizer
+    name: Pathfinder
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
-      - name: Setup Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.x
-
-      - name: Install dependencies
+      - name: Checkout
         run: |
+          echo "Attempting to install pygbag"
           python -m pip install pygbag
+          echo "Successfully installed pygbag"
+          echo "Attempting to build the game"
+          python -m pygbag --build $GITHUB_WORKSPACE/space_invaders/main.py
+          echo "Successfully build the game and complied to WebAssembly"
 
-      - name: Build the visualizer
-        run: python -m pygbag --build $GITHUB_WORKSPACE/main.py
-
-  deploy-to-gh-pages:
-    name: Deploy to GitHub Pages
-    runs-on: ubuntu-latest
-    needs: build-pygbag
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: "Upload to GitHub pages branch gh-pages"
+        uses: boatnoah/github-pages-deploy-action@4.1.7
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ${{ github.workspace }}/build/web
+          branch: gh-pages
+          folder: $GITHUB_WORKSPACE/build/web
