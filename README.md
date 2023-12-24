@@ -50,8 +50,8 @@ Pathfinding is a fundamental problem in computer science, involving finding the 
 
 2. **Interact with the GUI:**
 
-   - Left Mouse Button: Set start and target positions, draw obstacles.
-   - Right Mouse Button: Erase walls.
+   - Left Mouse Button: Set start and target positions.
+   - Right Mouse Button: Draw walls.
    - c: Clear the grid.
    - Escape: Return to the algorithm selection menu.
    - Enter: Run the selected algorithm.
