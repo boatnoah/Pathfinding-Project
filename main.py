@@ -142,6 +142,7 @@ async def main(typeOfAlgo, first_run, is_cleared=False): #grid screen
                         path.clear()
                         priority_queue = PriorityQueue()
                         queue.clear()
+                        stack.clear()
                     if event.key == pygame.K_ESCAPE: 
                         #still preserve the starting and target positions and the walls 
                         for i in range(ROWS):
